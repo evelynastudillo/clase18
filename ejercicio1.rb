@@ -21,11 +21,20 @@
      tables.each do |table|
      best_day[table.mesa] = [table.max, table.max_day]
     end
-    p best_day
+    best_day
     end
 
     def Table.average(file)
-       #@dinero.inject(&:+) / @dinero.size.to_f
+      tables = build(file)
+      prom = {}
+      tables.each do |tab|
+        prom[tab.mesa] = [tab.avg]
+      end
+      prom
+
+    end
+    def avg
+      @dinero.inject(&:+) / @dinero.size.to_f
     end
 
      def max
@@ -37,4 +46,5 @@
       end
   end
 
-     Table.max_val('casino.txt')
+     p Table.max_val('casino.txt')
+     p Table.average('casino.txt')
